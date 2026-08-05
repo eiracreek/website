@@ -1,0 +1,88 @@
+<section class="section story-preview">
+	<div class="container story-grid">
+		<div class="story-heading">
+			<p class="eyebrow">Our Story</p>
+
+			<h2>One exceptionally tiny doe changed everything.</h2>
+		</div>
+
+		<div class="story-copy">
+			<p>
+				What began with a few bottle-fed dairy goats and a desire to provide fresh milk
+				for our family grew into something we never expected. Along the way, generous
+				mentors, remarkable goats, and one unforgettable little doe introduced us to the
+				Golden Guernsey and sparked a growing appreciation for one of the world's rarest
+				heritage dairy goat breeds.
+			</p>
+
+			<p>
+				That journey inspired a lifelong commitment to thoughtfully developing and
+				sharing the story of this extraordinary breed.
+			</p>
+
+			<a class="story-link" href="/our-story">
+				Read Our Story
+				<span aria-hidden="true">→</span>
+			</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.story-preview {
+		background: var(--color-primary);
+		color: white;
+	}
+
+	.story-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		gap: clamp(3rem, 8vw, 8rem);
+		align-items: start;
+	}
+
+	.story-preview .eyebrow {
+		color: var(--color-accent);
+	}
+
+	.story-preview h2 {
+		max-width: 620px;
+		color: white;
+	}
+
+	.story-copy {
+		max-width: 680px;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1.08rem;
+		line-height: 1.75;
+	}
+
+	.story-copy p:last-of-type {
+		margin-bottom: 2rem;
+	}
+
+	.story-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: white;
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.story-link span {
+		transition: transform 160ms ease;
+	}
+
+	.story-link:hover span,
+	.story-link:focus-visible span {
+		transform: translateX(0.3rem);
+	}
+
+	@media (max-width: 800px) {
+		.story-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+	}
+</style>

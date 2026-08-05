@@ -1,0 +1,86 @@
+<section class="cta">
+	<div class="cta-overlay"></div>
+
+	<div class="container cta-content">
+		<p class="eyebrow">Discover Eira Creek</p>
+
+		<h2>Meet the goats behind the mission.</h2>
+
+		<p>
+			Learn more about our herd, our breeding goals, and the Golden Guernseys that continue
+			to shape the future of Eira Creek.
+		</p>
+
+		<div class="cta-actions">
+			<a class="button cta-primary" href="/our-herd">Meet Our Herd</a>
+			<a class="button cta-secondary" href="/contact">Contact Eira Creek</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.cta {
+		position: relative;
+		display: flex;
+		min-height: 560px;
+		align-items: center;
+		overflow: hidden;
+		background: url('/images/hero-goat.jpg') center / cover no-repeat;
+	}
+
+	.cta-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			90deg,
+			rgba(10, 34, 59, 0.88),
+			rgba(10, 34, 59, 0.48),
+			rgba(10, 34, 59, 0.15)
+		);
+	}
+
+	.cta-content {
+		position: relative;
+		z-index: 1;
+		color: white;
+	}
+
+	.cta .eyebrow {
+		color: var(--color-accent);
+	}
+
+	.cta h2 {
+		max-width: 700px;
+		color: white;
+	}
+
+	.cta p:not(.eyebrow) {
+		max-width: 620px;
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 1.15rem;
+	}
+
+	.cta-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.cta-primary {
+		background: var(--color-accent);
+		color: var(--color-dark);
+	}
+
+	.cta-secondary {
+		border-color: white;
+		background: transparent;
+		color: white;
+	}
+
+	.cta-secondary:hover,
+	.cta-secondary:focus-visible {
+		background: white;
+		color: var(--color-dark);
+	}
+</style>

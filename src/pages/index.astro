@@ -1,24 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/home/Hero.astro';
+import Introduction from '../components/home/Introduction.astro';
+import Philosophy from '../components/home/Philosophy.astro';
+import BreedPreview from '../components/home/BreedPreview.astro';
+import HerdPreview from '../components/home/HerdPreview.astro';
+import StoryPreview from '../components/home/storyPreview.astro';
+import JournalPreview from '../components/home/JournalPreview.astro';
+import CallToAction from '../components/home/CallToAction.astro';
 ---
 
-<Layout>
-  <main>
-    <section
-      style="min-height:80vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:2rem;"
-    >
-      <h1 style="font-size:4rem; margin-bottom:0.5rem;">
-        Eira Creek
-      </h1>
-
-      <p style="font-size:1.5rem; max-width:700px;">
-        Preserving and advancing the Golden Guernsey goat through thoughtful breeding,
-        education, and stewardship.
-      </p>
-
-      <p style="margin-top:3rem; opacity:.7;">
-        Our website is currently being prepared for the Oregon State Fair.
-      </p>
-    </section>
-  </main>
+<Layout
+	title="Eira Creek | Golden Guernsey Goats"
+	description="Discover the Golden Guernsey, one of America’s rarest heritage dairy goat breeds, and meet Eira Creek’s preservation-focused breeding program."
+>
+	<Hero />
+	<Introduction />
+  <Philosophy />
+	<BreedPreview />
+  <HerdPreview />
+  <StoryPreview />
+  <JournalPreview />
+  <CallToAction />
 </Layout>

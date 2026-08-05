@@ -1,23 +1,544 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Eira Creek | Golden Guernsey Goats',
+	description =
+		'Discover the Golden Guernsey, one of America’s rarest heritage dairy goat breeds, and meet the preservation-focused breeding program at Eira Creek.',
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const navigation = [
+	{ label: 'Home', href: '/' },
+	{ label: 'The Breed', href: '/the-breed' },
+	{ label: 'Our Herd', href: '/our-herd' },
+	{ label: 'Journal', href: '/journal' },
+	{ label: 'Our Story', href: '/our-story' },
+	{ label: 'Contact', href: '/contact' },
+];
+
+const isCurrentPage = (href: string) => {
+	if (href === '/') {
+		return currentPath === '/';
+	}
+
+	return currentPath.startsWith(href);
+};
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+
+		<meta name="theme-color" content="#1976D2" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
 	</head>
+
 	<body>
-		<slot />
+		<a class="skip-link" href="#main-content">Skip to main content</a>
+
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="brand" href="/" aria-label="Eira Creek home">
+					<span class="brand-name">Eira Creek</span>
+					<span class="brand-description">Golden Guernseys</span>
+				</a>
+
+				<nav class="desktop-navigation" aria-label="Primary navigation">
+					{
+						navigation.map((item) => (
+							<a
+								href={item.href}
+								class:list={{ active: isCurrentPage(item.href) }}
+								aria-current={isCurrentPage(item.href) ? 'page' : undefined}
+							>
+								{item.label}
+							</a>
+						))
+					}
+				</nav>
+
+				<details class="mobile-navigation">
+					<summary>Menu</summary>
+
+					<nav aria-label="Mobile navigation">
+						{
+							navigation.map((item) => (
+								<a
+									href={item.href}
+									class:list={{ active: isCurrentPage(item.href) }}
+									aria-current={isCurrentPage(item.href) ? 'page' : undefined}
+								>
+									{item.label}
+								</a>
+							))
+						}
+					</nav>
+				</details>
+			</div>
+		</header>
+
+		<main id="main-content">
+			<slot />
+		</main>
+
+		<footer class="site-footer">
+			<div class="footer-inner">
+				<div>
+					<a class="footer-brand" href="/">Eira Creek</a>
+					<p>Preserving and thoughtfully developing the American Golden Guernsey.</p>
+				</div>
+
+				<nav aria-label="Footer navigation">
+					<a href="/the-breed">The Breed</a>
+					<a href="/our-herd">Our Herd</a>
+					<a href="/journal">Journal</a>
+					<a href="/our-story">Our Story</a>
+					<a href="/contact">Contact</a>
+				</nav>
+			</div>
+
+			<div class="footer-bottom">
+				<p>Golden Guernsey goats raised with care in Oregon.</p>
+				<p>&copy; {new Date().getFullYear()} Eira Creek</p>
+			</div>
+		</footer>
 	</body>
 </html>
 
-<style>
-	html,
+<style is:global>
+	:root {
+		/* Blue Hydrangea Estate — Bright Edition */
+		--color-primary: #1976d2;
+		--color-secondary: #fff9f0;
+		--color-accent: #e6b422;
+		--color-dark: #123a63;
+		--color-neutral: #e3eaf2;
+		--color-botanical: #8ea8e8;
+		--color-periwinkle: #b2a4f5;
+
+		--color-text: #18334d;
+		--color-text-soft: #53677a;
+		--color-white: #ffffff;
+
+		--font-heading: Georgia, 'Times New Roman', serif;
+		--font-body:
+			Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+			sans-serif;
+
+		--page-width: 1180px;
+		--reading-width: 720px;
+
+		--shadow-soft: 0 18px 50px rgba(18, 58, 99, 0.1);
+		--radius-small: 0.4rem;
+		--radius-medium: 1rem;
+		--radius-large: 2rem;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
 	body {
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		min-width: 320px;
+		background: var(--color-secondary);
+		color: var(--color-text);
+		font-family: var(--font-body);
+		font-size: 1rem;
+		line-height: 1.7;
+		text-rendering: optimizeLegibility;
+	}
+
+	img,
+	video {
+		display: block;
+		max-width: 100%;
+	}
+
+	a {
+		color: inherit;
+	}
+
+	button,
+	input,
+	textarea,
+	select {
+		font: inherit;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		margin-top: 0;
+		color: var(--color-dark);
+		font-family: var(--font-heading);
+		font-weight: 500;
+		line-height: 1.12;
+		text-wrap: balance;
+	}
+
+	h1 {
+		font-size: clamp(2.8rem, 7vw, 6.5rem);
+	}
+
+	h2 {
+		font-size: clamp(2.1rem, 4.5vw, 4rem);
+	}
+
+	h3 {
+		font-size: clamp(1.4rem, 2.5vw, 2rem);
+	}
+
+	p {
+		margin-top: 0;
+	}
+
+	::selection {
+		background: var(--color-periwinkle);
+		color: var(--color-dark);
+	}
+
+	.skip-link {
+		position: fixed;
+		top: 1rem;
+		left: 1rem;
+		z-index: 1000;
+		padding: 0.75rem 1rem;
+		background: var(--color-dark);
+		color: var(--color-white);
+		transform: translateY(-200%);
+	}
+
+	.skip-link:focus {
+		transform: translateY(0);
+	}
+
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		border-bottom: 1px solid rgba(18, 58, 99, 0.12);
+		background: rgba(255, 249, 240, 0.94);
+		backdrop-filter: blur(16px);
+	}
+
+	.header-inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: min(calc(100% - 2rem), var(--page-width));
+		min-height: 5.5rem;
+		margin-inline: auto;
+		gap: 2rem;
+	}
+
+	.brand {
+		display: inline-flex;
+		flex-direction: column;
+		text-decoration: none;
+	}
+
+	.brand-name {
+		color: var(--color-dark);
+		font-family: var(--font-heading);
+		font-size: clamp(1.65rem, 3vw, 2.15rem);
+		line-height: 1;
+	}
+
+	.brand-description {
+		margin-top: 0.35rem;
+		color: var(--color-primary);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.2em;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.desktop-navigation {
+		display: flex;
+		align-items: center;
+		gap: clamp(1rem, 2.2vw, 2rem);
+	}
+
+	.desktop-navigation a {
+		position: relative;
+		padding-block: 0.5rem;
+		color: var(--color-text);
+		font-size: 0.9rem;
+		font-weight: 650;
+		letter-spacing: 0.03em;
+		text-decoration: none;
+	}
+
+	.desktop-navigation a::after {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 2px;
+		background: var(--color-accent);
+		content: '';
+		transform: scaleX(0);
+		transform-origin: center;
+		transition: transform 180ms ease;
+	}
+
+	.desktop-navigation a:hover::after,
+	.desktop-navigation a:focus-visible::after,
+	.desktop-navigation a.active::after {
+		transform: scaleX(1);
+	}
+
+	.mobile-navigation {
+		display: none;
+		position: relative;
+	}
+
+	.mobile-navigation summary {
+		padding: 0.6rem 0.9rem;
+		border: 1px solid var(--color-primary);
+		border-radius: var(--radius-small);
+		color: var(--color-dark);
+		font-weight: 700;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	.mobile-navigation summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.mobile-navigation nav {
+		position: absolute;
+		top: calc(100% + 0.75rem);
+		right: 0;
+		display: grid;
+		min-width: 14rem;
+		padding: 0.75rem;
+		border: 1px solid rgba(18, 58, 99, 0.14);
+		border-radius: var(--radius-medium);
+		background: var(--color-secondary);
+		box-shadow: var(--shadow-soft);
+	}
+
+	.mobile-navigation a {
+		padding: 0.75rem;
+		border-radius: var(--radius-small);
+		text-decoration: none;
+	}
+
+	.mobile-navigation a:hover,
+	.mobile-navigation a.active {
+		background: var(--color-neutral);
+		color: var(--color-dark);
+	}
+
+	main {
+		min-height: 65vh;
+	}
+
+	.container {
+		width: min(calc(100% - 2rem), var(--page-width));
+		margin-inline: auto;
+	}
+
+	.reading-width {
+		max-width: var(--reading-width);
+	}
+
+	.section {
+		padding-block: clamp(4.5rem, 10vw, 8rem);
+	}
+
+	.section-neutral {
+		background: var(--color-neutral);
+	}
+
+	.section-primary {
+		background: var(--color-primary);
+		color: var(--color-white);
+	}
+
+	.section-primary h2,
+	.section-primary h3 {
+		color: var(--color-white);
+	}
+
+	.eyebrow {
+		margin-bottom: 1rem;
+		color: var(--color-primary);
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+	}
+
+	.section-primary .eyebrow {
+		color: var(--color-secondary);
+	}
+
+	.lead {
+		color: var(--color-text-soft);
+		font-size: clamp(1.1rem, 2vw, 1.35rem);
+		line-height: 1.75;
+	}
+
+	.section-primary .lead {
+		color: rgba(255, 255, 255, 0.88);
+	}
+
+	.button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 3.15rem;
+		padding: 0.8rem 1.4rem;
+		border: 2px solid transparent;
+		border-radius: var(--radius-small);
+		background: var(--color-primary);
+		color: var(--color-white);
+		font-weight: 750;
+		line-height: 1;
+		text-decoration: none;
+		transition:
+			transform 160ms ease,
+			background-color 160ms ease,
+			border-color 160ms ease;
+	}
+
+	.button:hover,
+	.button:focus-visible {
+		background: var(--color-dark);
+		transform: translateY(-2px);
+	}
+
+	.button-secondary {
+		border-color: var(--color-primary);
+		background: transparent;
+		color: var(--color-primary);
+	}
+
+	.button-secondary:hover,
+	.button-secondary:focus-visible {
+		background: var(--color-primary);
+		color: var(--color-white);
+	}
+
+	.site-footer {
+		padding: 4rem 1rem 1.5rem;
+		background: var(--color-dark);
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.footer-inner,
+	.footer-bottom {
+		width: min(100%, var(--page-width));
+		margin-inline: auto;
+	}
+
+	.footer-inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+		gap: 3rem;
+		padding-bottom: 3rem;
+	}
+
+	.footer-inner p {
+		max-width: 31rem;
+		margin-top: 1rem;
+	}
+
+	.footer-brand {
+		color: var(--color-white);
+		font-family: var(--font-heading);
+		font-size: 2.2rem;
+		text-decoration: none;
+	}
+
+	.footer-inner nav {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		align-content: start;
+		gap: 0.8rem 2rem;
+	}
+
+	.footer-inner nav a {
+		text-decoration: none;
+	}
+
+	.footer-inner nav a:hover,
+	.footer-inner nav a:focus-visible {
+		color: var(--color-accent);
+	}
+
+	.footer-bottom {
+		display: flex;
+		justify-content: space-between;
+		gap: 2rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.16);
+		font-size: 0.85rem;
+	}
+
+	.footer-bottom p {
+		margin-bottom: 0;
+	}
+
+	@media (max-width: 860px) {
+		.desktop-navigation {
+			display: none;
+		}
+
+		.mobile-navigation {
+			display: block;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.header-inner {
+			min-height: 4.75rem;
+		}
+
+		.footer-inner {
+			grid-template-columns: 1fr;
+		}
+
+		.footer-bottom {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		*,
+		*::before,
+		*::after {
+			transition-duration: 0.01ms !important;
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+		}
 	}
 </style>

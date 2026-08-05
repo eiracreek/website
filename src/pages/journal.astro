@@ -1,0 +1,236 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const articles = [
+	{
+		title: 'Why We Bottle-Raise Every Kid',
+		category: 'Herd Management',
+		summary:
+			'How early handling, consistent care, and daily interaction help us raise confident, affectionate Golden Guernseys.',
+	},
+	{
+		title: 'Preparing Golden Guernseys for the Show Ring',
+		category: 'Showing',
+		summary:
+			'A look at grooming long coats, building trust, and presenting the natural character of the breed.',
+	},
+	{
+		title: 'Preserving the Golden Guernsey’s Moderate Size',
+		category: 'Breeding Philosophy',
+		summary:
+			'Why we believe breed improvement should strengthen the Golden Guernsey without changing its historic identity.',
+	},
+];
+---
+
+<Layout
+	title="Journal | Eira Creek"
+	description="Read observations, educational articles, herd updates, and lessons from the Eira Creek Golden Guernsey breeding program."
+>
+	<header class="page-hero">
+		<div class="container page-hero-content">
+			<p class="eyebrow">The Eira Creek Journal</p>
+
+			<h1>Always Learning</h1>
+
+			<p class="lead">
+				Every season brings new lessons. We share the experiences, observations, and
+				decisions that continue to shape our herd and deepen our understanding of the
+				Golden Guernsey.
+			</p>
+		</div>
+	</header>
+
+	<section class="section journal-introduction">
+		<div class="container introduction-grid">
+			<div>
+				<p class="eyebrow">Sharing What We Learn</p>
+
+				<h2>Knowledge shared strengthens the breed.</h2>
+			</div>
+
+			<div>
+				<p class="lead">
+					The journal is where we document the work behind Eira Creek, including kidding
+					seasons, herd management, breeding decisions, shows, breed history, and the
+					everyday observations that help guide our program.
+				</p>
+
+				<p>
+					Some entries will share practical information. Others will record moments,
+					questions, and lessons from the barn. Our goal is to create a useful and honest
+					resource for established breeders, future breeders, and anyone interested in
+					the Golden Guernsey.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-neutral">
+		<div class="container">
+			<div class="section-heading">
+				<p class="eyebrow">Coming to the Journal</p>
+				<h2>Articles currently in development</h2>
+			</div>
+
+			<div class="article-grid">
+				{
+					articles.map((article) => (
+						<article class="article-card">
+							<p class="article-category">{article.category}</p>
+							<h3>{article.title}</h3>
+							<p>{article.summary}</p>
+							<span>Coming soon</span>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section journal-closing">
+		<div class="container closing-inner">
+			<p class="eyebrow">Follow Along</p>
+
+			<h2>The work of building a breeding program happens one season at a time.</h2>
+
+			<p class="lead">
+				We look forward to sharing what we learn as Eira Creek grows, our herd develops,
+				and we become more involved in the Golden Guernsey community.
+			</p>
+
+			<a class="button" href="/contact">Contact Eira Creek</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.page-hero {
+		padding-block: clamp(7rem, 16vw, 12rem);
+		background:
+			linear-gradient(rgba(18, 58, 99, 0.76), rgba(18, 58, 99, 0.76)),
+			url('/images/hero-goat.jpg') center / cover no-repeat;
+		color: white;
+	}
+
+	.page-hero-content {
+		max-width: 900px;
+		text-align: center;
+	}
+
+	.page-hero .eyebrow {
+		color: var(--color-accent);
+	}
+
+	.page-hero h1 {
+		color: white;
+	}
+
+	.page-hero .lead {
+		max-width: 740px;
+		margin: 0 auto;
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	.introduction-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+		gap: clamp(3rem, 8vw, 8rem);
+		align-items: start;
+	}
+
+	.introduction-grid p:not(.eyebrow) {
+		color: var(--color-text-soft);
+	}
+
+	.section-heading {
+		max-width: 720px;
+		margin-bottom: 3rem;
+	}
+
+	.article-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.5rem;
+	}
+
+	.article-card {
+		display: flex;
+		min-height: 330px;
+		flex-direction: column;
+		padding: 2rem;
+		border: 1px solid rgba(18, 58, 99, 0.12);
+		border-radius: var(--radius-large);
+		background: white;
+		box-shadow: var(--shadow-soft);
+	}
+
+	.article-category {
+		margin-bottom: 1rem;
+		color: var(--color-primary);
+		font-size: 0.75rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.article-card h3 {
+		margin-bottom: 1rem;
+	}
+
+	.article-card p:not(.article-category) {
+		color: var(--color-text-soft);
+	}
+
+	.article-card span {
+		margin-top: auto;
+		color: var(--color-dark);
+		font-size: 0.85rem;
+		font-weight: 750;
+	}
+
+	.journal-closing {
+		background: var(--color-dark);
+		color: white;
+	}
+
+	.closing-inner {
+		max-width: 850px;
+		text-align: center;
+	}
+
+	.journal-closing .eyebrow {
+		color: var(--color-accent);
+	}
+
+	.journal-closing h2 {
+		color: white;
+	}
+
+	.journal-closing .lead {
+		color: rgba(255, 255, 255, 0.86);
+	}
+
+	.journal-closing .button {
+		margin-top: 1.5rem;
+		background: var(--color-accent);
+		color: var(--color-dark);
+	}
+
+	@media (max-width: 900px) {
+		.article-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 800px) {
+		.introduction-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.article-card {
+			min-height: auto;
+		}
+	}
+</style>

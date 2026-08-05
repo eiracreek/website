@@ -1,0 +1,75 @@
+<section class="section introduction">
+	<div class="container introduction-grid">
+		<div>
+			<p class="eyebrow">Welcome to Eira Creek</p>
+
+			<h2>A rare breed with a remarkable future.</h2>
+		</div>
+
+		<div class="introduction-copy">
+			<p class="lead">
+				Golden Guernseys are known for their flowing coats, warm golden coloring,
+				moderate size, gentle temperament, intelligence, and rich milk.
+			</p>
+
+			<p>
+				We believe our responsibility is to leave the Golden Guernsey healthier,
+				stronger, and better understood than we found it. Through thoughtful breeding
+				and generous education, we hope to help more people discover and appreciate
+				this extraordinary heritage dairy goat.
+			</p>
+
+			<a class="text-link" href="/the-breed">
+				Learn what makes them special
+				<span aria-hidden="true">→</span>
+			</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.introduction {
+		background: var(--color-secondary);
+	}
+
+	.introduction-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		gap: clamp(3rem, 8vw, 8rem);
+		align-items: start;
+	}
+
+	.introduction h2 {
+		max-width: 560px;
+	}
+
+	.introduction-copy {
+		max-width: 680px;
+	}
+
+	.text-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55rem;
+		margin-top: 1rem;
+		color: var(--color-primary);
+		font-weight: 750;
+		text-decoration: none;
+	}
+
+	.text-link span {
+		transition: transform 160ms ease;
+	}
+
+	.text-link:hover span,
+	.text-link:focus-visible span {
+		transform: translateX(0.3rem);
+	}
+
+	@media (max-width: 760px) {
+		.introduction-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+	}
+</style>

@@ -1,0 +1,136 @@
+<section class="hero">
+	<div class="hero-overlay"></div>
+
+	<div class="container hero-content">
+		<p class="hero-eyebrow">Eira Creek Golden Guernseys</p>
+
+		<h1>
+			Discover One of America’s Rarest Dairy Goat Breeds.
+			<span>Meet the Golden Guernsey.</span>
+		</h1>
+
+		<p class="hero-introduction">
+			At Eira Creek, we are dedicated to preserving and thoughtfully developing the
+			American Golden Guernsey through exceptional animal care, responsible breeding,
+			generous education, and long-term commitment to the breed’s future.
+		</p>
+
+		<div class="hero-actions">
+			<a class="button hero-button" href="/the-breed">Discover the Breed</a>
+			<a class="button hero-button-secondary" href="/our-herd">Meet Our Herd</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		display: flex;
+		min-height: clamp(680px, 88vh, 900px);
+		align-items: flex-end;
+		overflow: hidden;
+		background:
+			linear-gradient(rgba(18, 58, 99, 0.12), rgba(18, 58, 99, 0.12)),
+			url('/images/hero-goat.jpg') center 40% / cover no-repeat;
+	}
+
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(
+				90deg,
+				rgba(10, 34, 59, 0.86) 0%,
+				rgba(10, 34, 59, 0.62) 48%,
+				rgba(10, 34, 59, 0.08) 78%
+			),
+			linear-gradient(0deg, rgba(10, 34, 59, 0.55), transparent 55%);
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 1;
+		padding-top: 8rem;
+		padding-bottom: clamp(5rem, 10vw, 8rem);
+		color: white;
+	}
+
+	.hero-eyebrow {
+		margin-bottom: 1.25rem;
+		color: var(--color-accent);
+		font-size: 0.8rem;
+		font-weight: 800;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+	}
+
+	.hero h1 {
+		max-width: 880px;
+		margin-bottom: 1.5rem;
+		color: white;
+		font-size: clamp(3.2rem, 7vw, 6.8rem);
+	}
+
+	.hero h1 span {
+		display: block;
+		margin-top: 0.2em;
+		color: var(--color-secondary);
+		font-size: 0.62em;
+	}
+
+	.hero-introduction {
+		max-width: 700px;
+		margin-bottom: 2rem;
+		color: rgba(255, 255, 255, 0.92);
+		font-size: clamp(1.05rem, 2vw, 1.3rem);
+		line-height: 1.75;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.hero-button {
+		background: var(--color-accent);
+		color: var(--color-dark);
+	}
+
+	.hero-button:hover,
+	.hero-button:focus-visible {
+		background: var(--color-secondary);
+		color: var(--color-dark);
+	}
+
+	.hero-button-secondary {
+		border-color: rgba(255, 255, 255, 0.75);
+		background: rgba(255, 255, 255, 0.08);
+		color: white;
+		backdrop-filter: blur(10px);
+	}
+
+	.hero-button-secondary:hover,
+	.hero-button-secondary:focus-visible {
+		border-color: white;
+		background: white;
+		color: var(--color-dark);
+	}
+
+	@media (max-width: 760px) {
+		.hero {
+			min-height: 720px;
+			background-position: 58% center;
+		}
+
+		.hero-overlay {
+			background:
+				linear-gradient(
+					0deg,
+					rgba(10, 34, 59, 0.92) 0%,
+					rgba(10, 34, 59, 0.7) 58%,
+					rgba(10, 34, 59, 0.25) 100%
+				);
+		}
+	}
+</style>
