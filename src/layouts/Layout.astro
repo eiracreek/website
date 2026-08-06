@@ -138,6 +138,28 @@ const isCurrentPage = (href: string) => {
 		--color-text-soft: #53677a;
 		--color-white: #ffffff;
 
+		:root {
+	/* Typography */
+
+	--text-xs: 0.85rem;
+	--text-sm: 1rem;
+	--text-md: 1.15rem;
+	--text-lg: 1.35rem;
+	--text-xl: 1.55rem;
+	--text-2xl: 2rem;
+	--text-3xl: 2.4rem;
+	--text-4xl: 3rem;
+}
+
+:root {
+	--space-xs: .5rem;
+	--space-sm: 1rem;
+	--space-md: 1.5rem;
+	--space-lg: 2rem;
+	--space-xl: 3rem;
+	--space-2xl: 5rem;
+}
+
 	--font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 --font-body:
 	'Source Sans 3', ui-sans-serif, system-ui, -apple-system,
@@ -203,18 +225,40 @@ const isCurrentPage = (href: string) => {
 	h1 {
 		font-size: clamp(2.8rem, 7vw, 6.5rem);
 	}
+	
+	h1 {
+	font-size: clamp(2.8rem, 7vw, 6.5rem);
+}
+
+.page-hero h1 {
+	font-size: clamp(2rem, 3vw, 3rem);
+	line-height: 1.1;
+}
+
+.page-hero .lead {
+	font-size: clamp(1rem, 1.4vw, 1.15rem);
+	line-height: 1.7;
+}
+
+.page-hero .eyebrow {
+	font-size: 0.85rem;
+}
 
 	h2 {
-		font-size: clamp(2.1rem, 4.5vw, 4rem);
-	}
+	font-size: clamp(1.8rem, 2vw, 2.15rem);
+	margin-bottom: 1.25rem;
+}
 
 	h3 {
-		font-size: clamp(1.4rem, 2.5vw, 2rem);
-	}
+	font-size: clamp(1.35rem, 1.5vw, 1.65rem);
+	margin-bottom: 0.75rem;
+}
 
 	p {
-		margin-top: 0;
-	}
+	margin-top: 0;
+	font-size: 1.1rem;
+	line-height: 1.75;
+}
 
 	::selection {
 		background: var(--color-periwinkle);
@@ -391,7 +435,7 @@ const isCurrentPage = (href: string) => {
 	.eyebrow {
 		margin-bottom: 1rem;
 		color: var(--color-primary);
-		font-size: 0.78rem;
+		font-size: 0.95rem;
 		font-weight: 800;
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
@@ -402,10 +446,11 @@ const isCurrentPage = (href: string) => {
 	}
 
 	.lead {
-		color: var(--color-text-soft);
-		font-size: clamp(1.1rem, 2vw, 1.35rem);
-		line-height: 1.75;
-	}
+	color: var(--color-text-soft);
+	font-size: 1.15rem;
+	font-weight: 400;
+	line-height: 1.8;
+}
 
 	.section-primary .lead {
 		color: rgba(255, 255, 255, 0.88);
